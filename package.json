@@ -1,0 +1,33 @@
+{
+  "name": "microsoft-todo-clone",
+  "version": "1.0.0",
+  "description": "A clone of Microsoft To do",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start-server": "nodemon server.js"
+  },
+  "keywords": [
+    "Microsoft",
+    "To",
+    "Do"
+  ],
+  "author": "Jamal Pelpuo",
+  "license": "ISC",
+  "dependencies": {
+    "@apollo/react-hooks": "^3.1.3",
+    "apollo-boost": "^0.4.7",
+    "body-parser": "^1.19.0",
+    "chalk": "^3.0.0",
+    "concurrently": "^5.1.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-graphql": "^0.9.0",
+    "graphql": "^14.6.0",
+    "mongoose": "^5.9.4"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}
