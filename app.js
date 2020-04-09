@@ -1,7 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const graphqlHTTP = require('express-graphql');
-const Schema = require('./graphql/schema/index')
+const Schema = require('./graphql/schema/index');
+const resolvers = require('./graphql/resolvers/index')
 
 const app = express();
 
@@ -15,7 +16,9 @@ app.use(bodyParser.json());
 // Graphql middleware
 app.use('/graphql', graphqlHTTP({
     schema : Schema,
-    rootValue: {},
+    rootValue: {
+        resolvers
+    },
     graphiql: true
 }))
 

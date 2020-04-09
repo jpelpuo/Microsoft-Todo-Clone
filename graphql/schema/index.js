@@ -2,11 +2,10 @@ const { buildSchema } = require('graphql');
 
 const Schema = buildSchema(`
     type User{
-        name: String!
+        _id: ID!
         email: String!
-        contact: String
-        username: String!
         password: String!
+        createdTasks: [Task!]!
     }
 
     type Task {
@@ -22,14 +21,26 @@ const Schema = buildSchema(`
         created_by: User
     }
 
+    input deleteTask {
+        task_id: ID!
+    }
+
+    input updateTask{
+        _id: ID!
+        task_body: String
+        task_completed: Boolean
+    }
+ 
+
     type RootQuery {
         getTasks: [Task!]!
     }
 
-    type RootMutation{
-        createTask(taskInput: createTaskInput): Task
-        deleteTask(task: Task!)
-        completeTask(task: Task!)
+    type RootMutation {
+        createTask(taskInput: createTaskInput): Task!
+        deleteTask(id: ID!): Task!
+        completeTask(id: ID!): Task!
+        updateTask(updateInput: updateTask!): Task!
     }
 
     schema {

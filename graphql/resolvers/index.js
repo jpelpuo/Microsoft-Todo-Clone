@@ -1,8 +1,10 @@
-module.exports.resolvers = {
-    getTasks : async () => {
-
+const resolvers = {
+    getTasks: async () => {
+        await console.log("Hi There")
     },
-    createTask : async ({}) => {
-        
+    createTask: async ({}) => {
+        await console.log("Hi there again")
     }
 }
+
+module.exports = resolvers;
