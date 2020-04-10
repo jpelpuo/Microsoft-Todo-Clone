@@ -1,10 +1,9 @@
+const taskResolvers = require('./tasks');
+const userResolvers = require('./user')
+
 const resolvers = {
-    getTasks: async () => {
-        await console.log("Hi There")
-    },
-    createTask: async ({}) => {
-        await console.log("Hi there again")
-    }
+    ...taskResolvers,
+    ...userResolvers
 }
 
 module.exports = resolvers;
