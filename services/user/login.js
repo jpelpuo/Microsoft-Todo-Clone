@@ -16,7 +16,7 @@ module.exports = login = async ({email, password}) => {
             throw new Error("Password is incorrect");
         }
 
-        const token = jwt.sign({userId: user.id, email : user.email}, 'myownsecrettoken', {expiresIn: '1h'});
+        const token = jwt.sign({userId: user.id, email : user.email}, process.env.JWT_SECRET, {expiresIn: '1h'});
         return {
             userId : user.id,
             token: token,

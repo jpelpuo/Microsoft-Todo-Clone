@@ -7,7 +7,7 @@ module.exports = createTask = async ({taskBody, taskCompleted, createdBy}) => {
         const task = new Task({taskBody, taskCompleted, createdBy});
         const newTask = await task.save();
 
-        const user = User.findById(createdBy);
+        const user = await User.findById(createdBy);
 
         if(!user){
             throw new Error("User not found");
