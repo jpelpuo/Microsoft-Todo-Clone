@@ -10,30 +10,41 @@ const Schema = buildSchema(`
 
     type Task {
         _id : ID!
-        task_body: String!
-        task_completed: Boolean!
-        created_by: User
+        taskBody: String!
+        taskCompleted: Boolean!
+        createdBy: User
     }
 
     input createTaskInput {
-        task_body: String!
-        task_completed: Boolean!
-        created_by: User
+        taskBody: String!
+        taskCompleted: Boolean!
     }
 
     input deleteTask {
-        task_id: ID!
+        taskId: ID!
     }
 
     input updateTask{
-        _id: ID!
-        task_body: String
-        task_completed: Boolean
+        id: ID!
+        taskBody: String
+        taskCompleted: Boolean
+    }
+
+    input addUser{
+        email: String!
+        password: String!
+    }
+
+    type AuthData{
+        userId: String!
+        token: String!
+        tokenExpiration: Int!
     }
  
-
     type RootQuery {
         getTasks: [Task!]!
+        getTask(id: ID!): Task!
+        login(email: String!, password: String!): AuthData!
     }
 
     type RootMutation {
@@ -41,6 +52,7 @@ const Schema = buildSchema(`
         deleteTask(id: ID!): Task!
         completeTask(id: ID!): Task!
         updateTask(updateInput: updateTask!): Task!
+        addUser(userInput: addUser!): User!
     }
 
     schema {

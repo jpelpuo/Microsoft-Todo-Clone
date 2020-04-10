@@ -48,7 +48,8 @@ module.exports = {
                 taskCompleted: args.taskInput.taskCompleted,
                 createdBy: request.userId
             });
-            return formatTaskData(newTask)
+
+            return formatTaskData(newTask);
 
         } catch (error) {
             throw error
