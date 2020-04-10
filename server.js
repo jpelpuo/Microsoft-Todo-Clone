@@ -1,9 +1,5 @@
 const app = require('./app');
-const chalk = require('chalk')
-if(process.env.NODE_ENV !== 'production'){
-    const ENV = require('dotenv');
-    ENV.config();
-}
+const chalk = require('chalk');
 
 const PORT = process.env.PORT || 3000;
 
