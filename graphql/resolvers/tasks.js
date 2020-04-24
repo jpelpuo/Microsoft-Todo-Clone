@@ -25,15 +25,15 @@ module.exports = {
             throw error
         }
     },
-    deleteTask: async ({ id }) => {
+    deleteTask: async ({ id }, request) => {
         try {
-            const deletedTask = deletedTask(id);
+            const deletedTask = await deleteTask(id, request.userId);
             return formatTaskData(deletedTask)
         } catch (error) {
             throw error;
         }
     },
-    completeTask: async ({ id }, userId) => {
+    completeTask: async ({ id }) => {
         try {
             const completedTask = await completeTask(id);
             return formatTaskData(completedTask);
@@ -56,22 +56,14 @@ module.exports = {
         }
     },
     updateTask: async (args, request) => {
-        try{
+        try {
             const updatedTask = await updateTask({
                 _id: args.updateInput.id,
                 taskBody: args.updateInput.taskBody,
                 taskCompleted: args.updateInput.taskCompleted
             })
             return formatTaskData(updatedTask)
-        }catch(error){
-            throw error;
-        }
-    },
-    deleteTask: async id => {
-        try{
-            const deletedTask = await deleteTask(id);
-            return formatTaskData(deletedTask);
-        }catch(error){
+        } catch (error) {
             throw error;
         }
     }

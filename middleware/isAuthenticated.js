@@ -9,6 +9,7 @@ module.exports = (request, response, next) => {
 
     const token = authHeader.split(' ')[1];
 
+
     if(!token || token == ''){
         request.isAuthenticated = false;
         return next();
