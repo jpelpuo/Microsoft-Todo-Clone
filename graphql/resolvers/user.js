@@ -5,6 +5,8 @@ module.exports = {
     addUser: async args => {
         try {
             const user = await addUser({
+                firstName : args.userInput.firstName,
+                lastName : args.userInput.lastName,
                 email: args.userInput.email,
                 password: args.userInput.password
             });

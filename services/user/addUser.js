@@ -3,11 +3,11 @@ const bcrypt = require('bcryptjs');
 
 const SALT_ROUNDS = 12;
 
-module.exports = addUser = async ({email, password}) => {
-    try{
-        const user = await User.findOne({email});
+module.exports = addUser = async ({ firstName, lastName, email, password }) => {
+    try {
+        const user = await User.findOne({ email });
 
-        if(user){
+        if (user) {
             throw new Error("User already exists")
         }
 
@@ -18,13 +18,15 @@ module.exports = addUser = async ({email, password}) => {
         password = hash;
 
         const newUser = new User({
+            firstName,
+            lastName,
             email,
             password
         })
 
         await newUser.save();
         return newUser;
-    }catch(error){
+    } catch (error) {
         throw error;
     }
 }

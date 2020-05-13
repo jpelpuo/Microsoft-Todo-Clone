@@ -1,4 +1,4 @@
-.auth__wrapper{
+.register__wrapper{
     background: url('../../assets/images/to-do.jpg');
     box-shadow: inset 0 0 0 100vw rgba(0,0,0,0.6);
     background-position: center;
@@ -9,7 +9,7 @@
     align-items: center;
 }
 
-.auth__form{
+.register__form{
     margin: 0 auto;
     width: 30rem;
     max-width: 80%;
@@ -20,17 +20,17 @@
     background-color: white;
 }
 
-.form__header{
+.register__form__header{
     padding: 0.5rem 0;
 }
 
-.form__header span{
+.register__form__header span{
     font-size: 1.6rem;
     font-weight: 500;
 }
 
 .form__control{
-    margin: 0.8rem 0;
+    margin: 0.5rem 0;
 }
 
 .form__control input{
@@ -49,13 +49,6 @@
     padding: calc(0.9rem - 0.03rem);
 }
 
-.form__control__error input{
-    border-color: red !important;
-}
-
-.form__control__error .floating__label{
-    color: red !important;
-}
 
 .floating__label{
     position: relative;
@@ -66,7 +59,6 @@
     transition: 0.1s ease-in;
     padding: 0rem 0.5rem;
 }
-
 
 .form__control input:focus ~ .floating__label{
     top: -3.7rem;
@@ -81,6 +73,14 @@
     font-size: 0.8rem;
 }
 
+.form__control__error input{
+    border-color: red !important;
+}
+
+.form__control__error .floating__label{
+    color: red !important;
+}
+
 .form__actions{
     display: flex;
     flex-direction: row;
@@ -89,16 +89,13 @@
 }
 
 .form__actions button{
-    /* padding: 0.5rem 1rem; */
     font-size: 1rem;
     color: white;
     background-color: #0080ff;
     border-radius: 0.2rem;
     border: 1px solid #0080ff;
     cursor: pointer;
-    display: inline-flex;
-    justify-content: center;
-    width: 6rem;
+    width: 8rem;
     height: 2.5rem;
 }
 
@@ -127,12 +124,15 @@
     color: rgba(0,127,255, 0.7);
 }
 
-.error__message{
+.alert{
     padding: 0 0 0.5rem 0.2rem;
-    transition: 0.5s ease-in;
 }
 
-.error__message span{
+.alert-failure span{
     color: red;
+}
+
+.alert-success span{
+    color: green;
     font-weight: light;
 }

@@ -1,20 +1,40 @@
-import React, {useState} from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { Provider } from 'react-redux';
-import store from './store';
-import AuthPage from "./pages/Auth/index";
+import React, { useEffect } from 'react';
+import { Router, Route, Switch, Redirect } from 'react-router-dom';
+import { connect, useDispatch, useSelector } from 'react-redux';
+import AuthPage from "./pages/Auth";
+import RegisterPage from "./pages/Register";
+import history from './helpers/history';
+import { clearAlert } from './redux/actions/alertActions'
 
-function App() {
+const mapStateToProps = state => {
+  return {
+    token: state.authentication.token
+  }
+}
+
+function App(props) {
+  const { token } = props;
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    history.listen((location, action) => {
+      dispatch(clearAlert());
+    })
+  }, []);
+
   return (
-    <Provider store={store}>
-      <BrowserRouter>
-        <div className="App">
-          <AuthPage/>
-        </div>
-      </BrowserRouter>
-
-    </Provider>
+    <Router history={history}>
+      <div className="App">
+        <Switch>
+          <Redirect from="/" to="/auth" exact />
+          {/* {token && <Redirect exact from="/auth" to="/register" />} */}
+          <Route path="/auth" component={AuthPage} />
+          <Route path="/register" component={RegisterPage} />
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
-export default App;
+export default connect(mapStateToProps, null)(App);

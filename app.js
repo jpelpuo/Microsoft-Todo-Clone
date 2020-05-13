@@ -26,7 +26,18 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
 app.use(bodyParser.json());
 
-app.use(isAuthenticated)
+app.use(isAuthenticated);
+
+app.use((request, response, next) => {
+    response.setHeader('Access-Control-Allow-Origin', '*');
+    response.setHeader('Access-Control-Allow-Methods', 'GET,POST,OPTIONS');
+    response.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+
+    if(request.method === 'OPTIONS'){
+        return response.sendStatus(200);
+    };
+    next();
+})
 
 // Graphql middleware
 app.use('/graphql', graphqlHTTP({

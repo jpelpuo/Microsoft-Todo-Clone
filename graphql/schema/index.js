@@ -3,6 +3,8 @@ const { buildSchema } = require('graphql');
 const Schema = buildSchema(`
     type User{
         _id: ID!
+        firstName: String!
+        lastName: String!
         email: String!
         password: String!
         createdTasks: [Task!]!
@@ -12,7 +14,7 @@ const Schema = buildSchema(`
         _id : ID!
         taskBody: String!
         taskCompleted: Boolean!
-        createdBy: User
+        createdBy: User!
     }
 
     input createTaskInput {
@@ -31,6 +33,8 @@ const Schema = buildSchema(`
     }
 
     input addUser{
+        firstName: String!
+        lastName: String!
         email: String!
         password: String!
     }
@@ -39,6 +43,8 @@ const Schema = buildSchema(`
         userId: String!
         token: String!
         tokenExpiration: Int!
+        firstName: String!
+        lastName: String!
     }
  
     type RootQuery {
@@ -52,7 +58,7 @@ const Schema = buildSchema(`
         deleteTask(id: ID!): Task!
         completeTask(id: ID!): Task!
         updateTask(updateInput: updateTask!): Task!
-        addUser(userInput: addUser!): User!
+        addUser(userInput: addUser!): User
     }
 
     schema {
