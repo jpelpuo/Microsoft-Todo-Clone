@@ -14,12 +14,13 @@ const Schema = buildSchema(`
         _id : ID!
         taskBody: String!
         taskCompleted: Boolean!
-        createdBy: User!
+        taskImportant: Boolean!
     }
 
     input createTaskInput {
         taskBody: String!
         taskCompleted: Boolean!
+        taskImportant: Boolean!
     }
 
     input deleteTask {
@@ -29,7 +30,8 @@ const Schema = buildSchema(`
     input updateTask{
         id: ID!
         taskBody: String
-        taskCompleted: Boolean
+        taskCompleted: Boolean!
+        taskImportant: Boolean!
     }
 
     input addUser{

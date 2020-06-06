@@ -46,10 +46,12 @@ module.exports = {
             const newTask = await createTask({
                 taskBody: args.taskInput.taskBody,
                 taskCompleted: args.taskInput.taskCompleted,
-                createdBy: request.userId
+                taskImportant: args.taskInput.taskImportant
             });
 
-            return formatTaskData(newTask);
+            return {
+                ...newTask._doc
+            };
 
         } catch (error) {
             throw error

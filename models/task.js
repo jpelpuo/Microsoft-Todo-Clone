@@ -9,9 +9,9 @@ const taskSchema = new Schema({
         type: Boolean,
         required: true
     },
-    createdBy:{
-        type: Schema.Types.ObjectId,
-        ref: 'User'
+    taskImportant: {
+        type: Boolean,
+        required: true
     }
 });
 
